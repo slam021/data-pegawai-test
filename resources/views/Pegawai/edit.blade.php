@@ -24,7 +24,9 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">FOTO</label>
                                 <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" id="foto">
-                                @if ($pegawai->foto)
+                                @if ($pegawai->foto == 'default.png' || $pegawai->foto == null)
+                                    <img src="{{ asset('default.png') }}" class="img-thumbnail mt-2" width="150">
+                                @else
                                     <img src="{{ asset('/storage/foto_pegawai/'.$pegawai->foto) }}" class="img-thumbnail mt-2" width="150">
                                 @endif
                                 @error('foto')
@@ -93,8 +95,8 @@
                             </div>
                             <button type="submit" class="btn btn-sm btn-primary me-3"><i class="fa fa-save"></i> UPDATE</button>
                             <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> RESET</button>
-                            <a href="{{ route('pegawais.index') }}" type="button" class="btn btn-sm btn-secondary float-end"><i class="fa fa-arrow-circle-left"></i> BACK</a>
-                        </form> 
+                            <a href="{{ url('/') }}" type="button" class="btn btn-sm btn-secondary float-end"><i class="fa fa-arrow-circle-left"></i> BACK</a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -120,9 +122,9 @@
             $('#tanggal_lahir').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
-                autoUpdateInput: false, 
+                autoUpdateInput: false,
                 locale: {
-                    format: 'MM/DD/YYYY' 
+                    format: 'MM/DD/YYYY'
                 }
             });
 

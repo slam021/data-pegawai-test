@@ -88,8 +88,8 @@
                             </div>
                             <button type="submit" class="btn btn-sm btn-primary me-3"><i class="fa fa-save"></i> SAVE</button>
                             <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> RESET</button>
-                            <a href="{{ route('pegawais.index') }}" type="button" class="btn btn-sm btn-secondary float-end"><i class="fa fa-arrow-circle-left"></i> BACK</a>
-                        </form> 
+                            <a href="{{ url('/') }}" type="button" class="btn btn-sm btn-secondary float-end"><i class="fa fa-arrow-circle-left"></i> BACK</a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
             $('#tanggal_lahir').on('cancel.daterangepicker', function(ev, picker) {
                 $(this).val('');
             });
-                
+
             $('#kelamin').select2( {
                 theme: 'bootstrap-5',
                 width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',

@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class PegawaiController extends Controller
 {
-    public function index()  
+    public function __invoke()
     {
         $data_pegawai = Pegawai::orderBy('created_at', 'DESC')->get();
         return view('Pegawai.index', compact('data_pegawai'));
     }
 
-    public function create() 
+    public function create()
     {
         return view('Pegawai.create');
     }
@@ -36,10 +36,10 @@ class PegawaiController extends Controller
         if ($request->hasFile('foto')) {
             $image = $request->file('foto');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-    
+
             // Simpan file ke storage/public/foto_pegawai
             $image->storeAs('public/foto_pegawai', $imageName);
-    
+
 
         $date = DateTime::createFromFormat('m/d/Y', $request->tanggal_lahir);
         $date->format('Y-m-d');

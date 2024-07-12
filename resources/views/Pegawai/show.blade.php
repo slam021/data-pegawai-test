@@ -18,7 +18,11 @@
                         <h4 class="text-center my-4 mt-2">Detail Pegawai</h4>
                         <hr>
                         <div class="form-group mb-3 text-center">
-                            <img src="{{ asset('/storage/foto_pegawai/'.$pegawai->foto) }}" class="rounded" style="width: 150px">
+                            @if ($pegawai->foto == 'default.png' || $pegawai->foto == null)
+                                <img src="{{ asset('default.png') }}" class="rounded" style="width: 150px">
+                            @else
+                                <img src="{{ asset('/storage/foto_pegawai/'.$pegawai->foto) }}" class="rounded" style="width: 150px">
+                            @endif
                         </div>
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">NAMA LENGKAP</label>
@@ -44,7 +48,7 @@
                             <label class="font-weight-bold">ALAMAT</label>
                             <textarea class="form-control" rows="5" disabled>{{ $pegawai->alamat }}</textarea>
                         </div>
-                        <a href="{{ route('pegawais.index') }}" class="btn btn-sm btn-secondary float-end"><i class="fa fa-arrow-circle-left"></i> BACK</a>
+                        <a href="{{ url('/') }}" class="btn btn-sm btn-secondary float-end"><i class="fa fa-arrow-circle-left"></i> BACK</a>
                     </div>
                 </div>
             </div>

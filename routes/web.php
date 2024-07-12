@@ -19,4 +19,5 @@ use App\Http\Controllers\PegawaiController;
 //     return view('welcome');
 // });
 
+Route::get('/', PegawaiController::class, 'index')->name('pegawais.index');
 Route::resource('/pegawais', PegawaiController::class);

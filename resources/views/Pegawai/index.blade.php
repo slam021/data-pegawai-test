@@ -39,7 +39,11 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}.</td>
                                             <td class="text-center">
-                                                <img src="{{ asset('storage/foto_pegawai/'.$pegawai->foto) }}" class="rounded" style="width: 150px">
+                                                @if ($pegawai->foto == 'default.png' || $pegawai->foto == null)
+                                                    <img src="{{ asset('default.png') }}" class="rounded" style="width: 150px">
+                                                @else
+                                                    <img src="{{ asset('storage/foto_pegawai/'.$pegawai->foto) }}" class="rounded" style="width: 150px">
+                                                @endif
                                             </td>
                                             <td>{{ $pegawai->nama_lengkap }}</td>
                                             <td>{{ $pegawai->jabatan }}</td>
@@ -89,7 +93,7 @@
                 responsive: true
             });
         });
-        
+
         //message with sweetalert
         @if(session('success'))
             Swal.fire({
